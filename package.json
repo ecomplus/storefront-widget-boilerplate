@@ -6,13 +6,17 @@
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "serve": "webpack-dev-server",
-    "serve:storefront": "storefront-template-copy && storefront-pack serve",
-    "release": "rm -rf ./dist; npm run build & standard-version"
+    "release": "rm -rf ./dist && npm run build && standard-version"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ecomclub/widget-example-name.git"
   },
+  "keywords": [
+    "ecomplus",
+    "storefront",
+    "widget"
+  ],
   "author": "E-Com Club <ti@e-com.club>",
   "license": "MIT",
   "bugs": {
@@ -34,18 +38,19 @@
     "@babel/preset-env": "^7.5.5",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
-    "@ecomplus/storefront-framework": "^4.5.0",
-    "@ecomplus/storefront-template": "^0.1.19",
+    "@ecomplus/storefront-framework": "^4.6.1",
+    "@ecomplus/storefront-template": "*",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
     "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.4",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.3.1",
-    "standard": "^14.0.0",
+    "standard": "^14.0.2",
     "standard-version": "^7.0.0",
     "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10",
