@@ -2,8 +2,9 @@
 
 const devMode = process.env.NODE_ENV !== 'production'
 const path = require('path')
-
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const templatePath = path.join(process.cwd(), 'node_modules/@ecomplus/storefront-template/dist')
 
 // preset default output object
 const output = {
@@ -19,14 +20,20 @@ const config = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output,
   devServer: {
-    contentBase: path.resolve(__dirname, 'test'),
+    contentBase: templatePath,
     stats: 'minimal',
+    port: 9124,
     open: true
   },
   stats: {
     colors: true
   },
   devtool: 'source-map',
+  plugins: [
+    new VueLoaderPlugin()
+  ],
+  // exclude all imported libs on production by default
+  externals: devMode ? '' : /^[^./].*$/,
 
   module: {
     rules: [
@@ -42,7 +49,6 @@ const config = {
         test: /\.(png|jpe?g|gif)$/i,
         use: 'file-loader'
       },
-
       {
         test: /\.s?css$/,
         use: [
@@ -63,20 +69,19 @@ const config = {
         ]
       }
     ]
-  },
+  }
+}
 
-  plugins: [
-    new VueLoaderPlugin()
-  ],
-
-  // exclude all imported libs on production by default
-  externals: devMode ? '' : /^[^./].*$/
+if (devMode) {
+  // inject widget script with HTML plugin
+  config.plugins.push(new HtmlWebpackPlugin({
+    template: path.resolve(templatePath, 'index.html')
+  }))
 }
 
 module.exports = devMode
   // single config object for dev server
   ? config
-
   // production outputs with and without polyfill
   : [
     config,
@@ -86,33 +91,6 @@ module.exports = devMode
         ...output,
         filename: output.filename.replace('.min.js', '.root.min.js')
       },
-
-      externals: {
-        vue: {
-          commonjs: 'vue',
-          commonjs2: 'vue',
-          root: 'Vue'
-        },
-        '@ecomplus/utils': {
-          commonjs: '@ecomplus/utils',
-          commonjs2: '@ecomplus/utils',
-          root: 'ecomUtils'
-        },
-        '@ecomplus/client': {
-          commonjs: '@ecomplus/client',
-          commonjs2: '@ecomplus/client',
-          root: 'ecomClient'
-        },
-        '@ecomplus/search-engine': {
-          commonjs: '@ecomplus/search-engine',
-          commonjs2: '@ecomplus/search-engine',
-          root: 'EcomSearch'
-        },
-        '@ecomplus/storefront-twbs': {
-          commonjs: '@ecomplus/storefront-twbs',
-          commonjs2: '@ecomplus/storefront-twbs',
-          root: '__storefront_twbs'
-        }
-      }
+      externals: require('@ecomplus/storefront-template/webpack.externals')
     }
   ]
