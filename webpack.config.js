@@ -79,7 +79,7 @@ const config = {
       }
     }
     // exclude all imported libs on production by default
-    : /^[^./].*$/
+    : /^(core-js|@babel\/runtime|vue|vue2-transitions|lodash.*|lozad|@glide\/.*|eventemitter3|@ecomplus\/.*)$/
 }
 
 if (devMode) {
