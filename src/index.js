@@ -1,10 +1,9 @@
 import Vue from 'vue'
+import '@ecomplus/storefront-twbs'
 import App from './App.vue'
 
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
-
-console.log(1)
+export default options => {
+  new Vue({
+    render: h => h(App)
+  }).$mount('#el')
+}
