@@ -37,7 +37,12 @@ const config = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          compilerOptions: {
+            whitespace: devMode ? 'preserve' : 'condense'
+          }
+        }
       },
       {
         test: /^(.(?!\.min.js$))+\.m?js$/,
