@@ -2,7 +2,11 @@
   "name": "@ecomplus/widget-example-name",
   "version": "0.0.1",
   "description": "My E-Com Plus storefront plugin",
-  "main": "src/index.js",
+  "main": "dist/widget-example-name.min.js",
+  "module": "src/index.js",
+  "browser": "dist/widget-example-name.min.js",
+  "jsdelivr": "dist/widget-example-name.root.min.js",
+  "unpkg": "dist/widget-example-name.root.min.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "serve": "webpack-dev-server",
