@@ -8,8 +8,9 @@ const templatePath = path.join(process.cwd(), 'node_modules/@ecomplus/storefront
 
 // preset default output object
 const output = {
-  library: '__widget_example_name',
+  library: 'widgetExampleName',
   libraryTarget: 'umd',
+  libraryExport: 'default',
   path: path.resolve(__dirname, 'dist'),
   filename: 'widget-example-name.min.js'
 }
