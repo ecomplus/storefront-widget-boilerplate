@@ -42,7 +42,7 @@
     "@babel/preset-env": "^7.5.5",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
-    "@ecomplus/storefront-framework": "^4.6.1",
+    "@ecomplus/storefront-framework": "*",
     "@ecomplus/storefront-template": "*",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
