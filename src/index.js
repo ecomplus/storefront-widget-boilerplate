@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import '@ecomplus/storefront-twbs'
-import App from './App.vue'
+import MyComponent from './components/MyComponent.vue'
 
 export default options => {
+  const elId = 'some-el-id'
   new Vue({
-    render: h => h(App)
-  }).$mount('#el')
+    components: {
+      MyComponent
+    },
+    template: `
+    <my-component id="${elId}"/>`
+  }).$mount(`#${elId}`)
 }
