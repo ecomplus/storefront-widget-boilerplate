@@ -31,7 +31,7 @@
     "@babel/runtime": "^7.5.5",
     "@ecomplus/client": "^1.0.3",
     "@ecomplus/search-engine": "^1.0.1",
-    "@ecomplus/storefront-twbs": "^3.2.0",
+    "@ecomplus/storefront-twbs": "^4.0.3",
     "@ecomplus/utils": "^1.0.1",
     "core-js": "^3.2.1",
     "vue": "^2.6.10"
