@@ -14,8 +14,10 @@ const output = {
   libraryTarget: 'umd',
   libraryExport: 'default',
   path: path.resolve(__dirname, 'dist'),
-  filename: 'widget-example-name.min.js'
+  filename: 'widget-example-name.min.js',
+  publicPath: devMode ? '/' : '/assets/vendor/'
 }
+output.chunkFilename = output.filename.replace('.min.js', '.[name].min.js')
 
 // base Webpack config
 const config = {
@@ -118,7 +120,8 @@ module.exports = devMode
       ...config,
       output: {
         ...output,
-        filename: output.filename.replace('.min.js', '.root.min.js')
+        filename: output.filename.replace('.min.js', '.root.min.js'),
+        chunkFilename: output.chunkFilename.replace('.min.js', '.root.min.js')
       },
       externals
     }
