@@ -120,8 +120,7 @@ module.exports = devMode
       ...config,
       output: {
         ...output,
-        filename: output.filename.replace('.min.js', '.root.min.js'),
-        chunkFilename: output.chunkFilename.replace('.min.js', '.root.min.js')
+        path: path.join(output.path, 'root')
       },
       externals
     }
