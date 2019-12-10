@@ -120,6 +120,7 @@ module.exports = devMode
       ...config,
       output: {
         ...output,
+        libraryTarget: 'var',
         path: path.join(output.path, 'root')
       },
       externals
