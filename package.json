@@ -2,7 +2,7 @@
   "name": "@ecomplus/widget-example-name",
   "version": "0.0.1",
   "description": "My E-Com Plus storefront plugin",
-  "module": "dist/widget-example-name.es.js",
+  "module": "src/index.js",
   "browser": "dist/widget-example-name.min.js",
   "main": "dist/widget-example-name.min.js",
   "jsdelivr": "dist/widget-example-name.root.min.js",
